@@ -9,8 +9,8 @@ Source0:	http://dl.sourceforge.net/openhip/hip-%{version}.tgz
 # Source0-md5:	68507996790ef185e8be8ecd262143d9
 Source1:	http://dl.sourceforge.net/openhip/hipd-0.3.4.tgz
 # Source1-md5:	4ea6d4747a8c2df2a737fd578b37fb7c
-URL:		http://www.openhip.org/
 Patch0:		%{name}-DESTDIR.patch
+URL:		http://www.openhip.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libxml2-devel
@@ -28,14 +28,14 @@ HIP is a specific proposal to decouple network identity from network
 location in the Internet protocol stack. Historically, IP addresses
 have served both functions. This dual use of IP addresses is becoming
 problematic, and there have been many research efforts aimed at
-studying the decoupling of identifier and locator in the network stack.
-HIP is a specific proposal that uses public/private key pairs as the
-host identifiers.
-
+studying the decoupling of identifier and locator in the network
+stack. HIP is a specific proposal that uses public/private key pairs
+as the host identifiers.
 
 %description -l pl.UTF-8
 OpenHIP jest otwartą implementacją protokołu HIP, rozwijanego w ramach
 IETF oraz IRTF.
+
 HIP jest propozycją rozdzielenia w stosie protokołów sieciowych
 identyfikacji węzła od jego lokalizacji. Historycznie adres IP pełnił
 obie te funkcje, co staje się obecnie problematyczne. HIP do
@@ -64,6 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/*
 %doc AUTHORS ChangeLog NEWS README hipd-0.3.4/doc/*
-%config %{_sysconfdir}/hip
+%attr(755,root,root) %{_sbindir}/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/hip
