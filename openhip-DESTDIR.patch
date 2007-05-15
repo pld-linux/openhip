@@ -1,0 +1,18 @@
+--- src/Makefile.am.orig	2007-01-10 20:54:13.000000000 +0100
++++ src/Makefile.am	2007-03-13 00:37:37.000000000 +0100
+@@ -68,11 +68,11 @@
+ 
+ # make sure that HIP directories are available
+ install-data-hook:
+-	test -d "$(localstatedir)/log" || mkdir -p "$(localstatedir)/log"
+-	test -d "$(localstatedir)/run" || mkdir -p "$(localstatedir)/run"
+-	test -d "$(sysconfdir)" || mkdir -p "$(sysconfdir)"
++	test -d "$(localstatedir)/log" || mkdir -p "$(DESTDIR)$(localstatedir)/log"
++	test -d "$(localstatedir)/run" || mkdir -p "$(DESTDIR)$(localstatedir)/run"
++	test -d "$(sysconfdir)" || mkdir -p "$(DESTDIR)$(sysconfdir)"
+ 	test -e "$(sysconfdir)/known_host_identities.xml" || \
+-		cp ../conf/known_host_identities.xml $(sysconfdir)
++		cp ../conf/known_host_identities.xml $(DESTDIR)$(sysconfdir)
+ 	@echo 
+ 	@echo Configuration files will reside in $(sysconfdir).
+ 	@echo " - run $(sbindir)/hitgen -conf to generate"
